@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>视频生成成功</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #fff;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            text-align: center;
+        }
+        
+        .success-icon {
+            font-size: 80px;
+            color: #4CAF50;
+            margin-bottom: 20px;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #00c853, #b2ff59);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(90deg, #00c853, #b2ff59);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn-download {
+            background: linear-gradient(90deg, #2196F3, #21CBF3);
+        }
+        
+        .btn-home {
+            background: linear-gradient(90deg, #ff9800, #ffeb3b);
+        }
+        
+        .video-info {
+            margin: 25px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        
+        .video-info p {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+        
+        .video-info strong {
+            color: #4CAF50;
+        }
+        
+        footer {
+            margin-top: 30px;
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                display: block;
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="success-icon">🎬</div>
+        <h1>视频生成成功！</h1>
+        <p>您的照片字幕动画视频已成功创建，可以下载到本地设备。</p>
+        
+        <div class="video-info">
+            <p><i class="fas fa-file-video"></i> 文件名: <strong>{{ filename }}</strong></p>
+            <p><i class="fas fa-info-circle"></i> 格式: MP4视频文件</p>
+            <p><i class="fas fa-download"></i> 点击下方按钮下载视频</p>
+        </div>
+        
+        <div class="btn-group">
+            <a href="/download/{{ filename }}" class="btn btn-download">
+                <i class="fas fa-download"></i> 下载视频
+            </a>
+            <a href="/" class="btn btn-home">
+                <i class="fas fa-home"></i> 创建新视频
+            </a>
+        </div>
+        
+        <footer>
+            <p>© 2023 照片字幕动画生成器 | 专业照片转视频工具</p>
+        </footer>
+    </div>
+</body>
+</html>
